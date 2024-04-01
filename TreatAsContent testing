@@ -1,0 +1,83 @@
+%%[
+
+set @email = QueryParameter("Email")
+
+if RequestParameter("submitted") == true then 
+ 
+set @promocode = ClaimRowValue("PromoCodeChallenge13","PromoCode","IsClaimed","WELCOME15","Email",@email)
+
+SET @success = @promocode
+endif
+]%%
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Day 21 Challenge </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+  </head>
+<body>  
+  
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="/" class="d-flex align-items-center text-dark text-decoration-none fs-4">
+      Your Logo
+    </a>
+  </header>
+
+  %%[ IF Empty(@email) THEN ]%%
+  <main>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p class="alert alert-primary">The link has expired. This can occur if the link was forwarded or if you did not click the link from the email.</p>
+      </div>
+    </div>
+  </main>
+  
+  %%[ ELSE ]%% 
+
+
+
+  <main>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <h1>Claim Your Promo Code</h1>
+        <p class="fs-5">There is only one more thing to do: Click the below button to see your unique promo code.</p>
+        
+        %%[ IF NOT empty(@success) THEN ]%%
+          <p class="alert alert-success">%%=v(@success)=%%</p>
+        %%[ ENDIF ]%%
+        
+        <form method="post">
+          <input type="hidden" name="submitted" value="true">
+          <button type="submit" class="btn btn-primary btn-lg">Get you coupon</button>
+        </form>
+        %%[ ENDIF ]%%
+
+        
+      </div>
+    </div>
+  </main>
+  
+  
+  <footer class="pt-5 my-5 text-muted border-top">
+    Created for AMPscript30 &middot; &copy; 2023
+  </footer>
+</div>
+      
+  </body>
+</html>
+
+
+
+</html>
+
+
