@@ -37,7 +37,7 @@ endif
   <main>
     <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
-        <p class="alert alert-primary">The link has expired. This can occur if the link was forwarded or if you did not click the link from the email.</p>
+        <p class="alert alert-primary">The Cloudpage is working but The link has expired. This can occur if the link was forwarded or if you did not click the link from the email.</p>
       </div>
     </div>
   </main>
